@@ -21,6 +21,7 @@ import { BsCalendarPlus } from 'react-icons/bs';
 import Image from './logo.png';
 import Home from './Home';
 import Shorts from './Shorts';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 180;
 
@@ -93,7 +94,7 @@ export default function Sidebarnav() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [menudata, setMenudata] = React.useState("Home");
-
+    const pages = ["Shorts", "Home"];
     // const handleDrawerOpen = () => {
     //     setOpen(true);
     // };
@@ -106,7 +107,7 @@ export default function Sidebarnav() {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar position="fixed" elevation={4} sx={{background:"#FF1E00", color: "white"}}>
+                <AppBar position="fixed" elevation={4} sx={{ background: "#FF1E00", color: "white" }}>
                     <Toolbar>
                         <IconButton
                             color="inherit"
@@ -118,64 +119,64 @@ export default function Sidebarnav() {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-                          <img src={Image} alt="" height={60}/>
+                            <img src={Image} alt="" height={60} />
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open}>
-                    <DrawerHeader>
-                        <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider />
-                    <List>
-                        <ListItem key={"Dashboard"} disablePadding sx={{ display: 'block' }} onClick={() => { setMenudata("Dashboard") }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
+                    <Drawer variant="permanent" open={open}>
+                        <DrawerHeader>
+                            <IconButton onClick={handleDrawerClose}>
+                                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                            </IconButton>
+                        </DrawerHeader>
+                        <Divider />
+                        <List>
+                            <ListItem key={"Dashboard"} component={Link} to={`/${pages}`} disablePadding sx={{ display: 'block' }} onClick={() => { setMenudata("Dashboard") }}>
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
                                 >
-                                    <RxDashboard />
-                                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                                </ListItemIcon>
-                                <ListItemText primary={"Home"} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem key={"Report"} disablePadding sx={{ display: 'block' }} onClick={() => { setMenudata("Report") }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <RxDashboard />
+                                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                                    </ListItemIcon>
+                                    <ListItemText primary={"Home"} sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem key={"Report"} disablePadding sx={{ display: 'block' }} onClick={() => { setMenudata("Report") }}>
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
                                 >
-                                    <BsCalendarPlus />
-                                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                                </ListItemIcon>
-                                <ListItemText primary={"Booking"} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    </List>
-                    <Divider />
-                </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3, background:"red"}}>
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <BsCalendarPlus />
+                                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                                    </ListItemIcon>
+                                    <ListItemText primary={"Booking"} sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                    </Drawer>
+                <Box component="main" sx={{ flexGrow: 1, p: 3}}>
                     {menudata === "Dashboard" && <Home />}
                     {menudata === "Report" && <Shorts />}
                 </Box>
