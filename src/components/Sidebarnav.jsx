@@ -94,7 +94,8 @@ export default function Sidebarnav() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [menudata, setMenudata] = React.useState("Home");
-    const pages = ["Shorts", "Home"];
+    const [bgColor, setBgColor] = React.useState({ display: 'block' });
+    const listBgColorClass = bgColor == { display: 'block', background: 'red' } ? { display: 'block', background: 'red' } : { display: 'block' } ;
     // const handleDrawerOpen = () => {
     //     setOpen(true);
     // };
@@ -123,15 +124,16 @@ export default function Sidebarnav() {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                    <Drawer variant="permanent" open={open}>
-                        <DrawerHeader>
-                            <IconButton onClick={handleDrawerClose}>
-                                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                            </IconButton>
-                        </DrawerHeader>
-                        <Divider />
-                        <List>
-                            <ListItem key={"Dashboard"} component={Link} to={`/${pages}`} disablePadding sx={{ display: 'block' }} onClick={() => { setMenudata("Dashboard") }}>
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <List>
+                        <Link to={"/"} style={{ textDecoration: "none", color: "inherit" }}>
+                            <ListItem key={"Dashboard"} disablePadding sx={listBgColorClass} onClick={() => { setMenudata("Dashboard") }}>
                                 <ListItemButton
                                     sx={{
                                         minHeight: 48,
@@ -152,7 +154,9 @@ export default function Sidebarnav() {
                                     <ListItemText primary={"Home"} sx={{ opacity: open ? 1 : 0 }} />
                                 </ListItemButton>
                             </ListItem>
-                            <ListItem key={"Report"} disablePadding sx={{ display: 'block' }} onClick={() => { setMenudata("Report") }}>
+                        </Link>
+                        <Link to={"/leave-booking"} style={{ textDecoration: "none", color: "inherit" }}>
+                            <ListItem key={"Report"} disablePadding sx={listBgColorClass} onClick={() => { setMenudata("Report"); setBgColor({ display: 'block', background: 'red' }) }}>
                                 <ListItemButton
                                     sx={{
                                         minHeight: 48,
@@ -173,10 +177,11 @@ export default function Sidebarnav() {
                                     <ListItemText primary={"Booking"} sx={{ opacity: open ? 1 : 0 }} />
                                 </ListItemButton>
                             </ListItem>
-                        </List>
-                        <Divider />
-                    </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3}}>
+                        </Link>
+                    </List>
+                    <Divider />
+                </Drawer>
+                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     {menudata === "Dashboard" && <Home />}
                     {menudata === "Report" && <Shorts />}
                 </Box>
