@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import {
-    DataGridPremium,
+    GridToolbarDensitySelector,
     GridToolbarContainer,
     GridToolbarExport,
 } from '@mui/x-data-grid-premium';
@@ -11,6 +11,11 @@ import {
 export default function Home() {
 
     const [data, setData] = useState([]);
+    const [selectionModel, setSelectionModel] = React.useState([]);
+
+    const handleSelectionChange = (newSelection) => {
+        setSelectionModel(newSelection.selectionModel);
+    };
 
     const getData = async () => {
         await axios.get("https://jsonplaceholder.typicode.com/users/")
@@ -52,23 +57,31 @@ export default function Home() {
 
     function CustomToolbar() {
         return (
-          <GridToolbarContainer>
-            <GridToolbarExport />
-          </GridToolbarContainer>
+            <GridToolbarContainer>
+                <GridToolbarExport />
+                <GridToolbarDensitySelector />
+            </GridToolbarContainer>
         );
-      }
+    }
 
 
     return (
         <>
             <Box height={100} />
-            <div style={{ height: 400 }}>
+            <div>
                 <DataGrid
+                    autoHeight={true}
                     rows={rows}
-                    rowHeight={25}
                     columns={columns}
-                    pageSize={10}
-                    rowsPerPageOptions={[5]}
+                    pageSize={5}
+                    checkboxSelection
+                    onSelectionModelChange={handleSelectionChange}
+                    selectionModel={selectionModel}
+                    checkboxSelectionProps={{
+                        disableSelectAll: true,
+                    }}
+                    rowsPerPage={rows.length}
+                    disableMultipleSelection
                     components={{
                         Toolbar: CustomToolbar,
                     }}
