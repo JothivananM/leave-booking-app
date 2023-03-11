@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Typography from '@mui/material/Typography';
+ 
 // import { width } from '@mui/system';
 // import Fab from '@mui/material/Fab';
 // import AddIcon from '@mui/icons-material/Add';
@@ -14,7 +16,7 @@ export default function Shorts() {
 
     return (
         <>
-            <Box height={100} />
+            <Box height={80} />
             {/* <div className="card w-50">
                 <div className="card-body">
                     <form>
@@ -53,6 +55,45 @@ export default function Shorts() {
                     </form>
                 </div>
             </div> */}
+            <Typography paragraph>
+                Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
+                eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+                neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
+                tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
+                sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
+                tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
+                gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
+                et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
+                tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+                eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+                posuere sollicitudin aliquam ultrices sagittis orci a.
+            </Typography>
+            <Typography paragraph>
+                Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
+                eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+                neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
+                tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
+                sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
+                tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
+                gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
+                et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
+                tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+                eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+                posuere sollicitudin aliquam ultrices sagittis orci a.
+            </Typography>
+            <Typography paragraph>
+                Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
+                eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+                neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
+                tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
+                sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
+                tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
+                gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
+                et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
+                tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+                eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+                posuere sollicitudin aliquam ultrices sagittis orci a.
+            </Typography>
            <div className='w-50 m-auto'>
            <FormGroup>
                 <FormControl>
